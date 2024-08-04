@@ -17,7 +17,7 @@ const create = async (req, res) => {
             })
         }
 
-        const username = sanitizeHtml(req.body.username, {
+        const username= sanitizeHtml(req.body.username, {
             allowedTags: [],
             allowedAttributes: {}
         });
@@ -46,15 +46,11 @@ const create = async (req, res) => {
                 allowedTags: [],
                 allowedAttributes: {}
             }),
-            username: sanitizeHtml(req.body.username, {
-                allowedTags: [],
-                allowedAttributes: {}
-            }),
+            username: username,
             role: sanitizeHtml(req.body.role, {
                 allowedTags: [],
                 allowedAttributes: {}
             }),
-            username: username,
             password: hashedPassword
         };
 

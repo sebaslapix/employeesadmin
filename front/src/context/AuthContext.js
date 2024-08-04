@@ -30,6 +30,7 @@ const AuthProvider = ({children}) => {
 
     const logout = () => {
         setEmployee(null);
+        localStorage.removeItem('employee');
         localStorage.removeItem('token');
     };
 
