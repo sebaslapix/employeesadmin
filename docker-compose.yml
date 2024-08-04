@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./server
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./server/.env
+    volumes:
+      - ./server:/usr/src/app
+    depends_on:
+      - db
+
+  frontend:
+    build: ./front
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./front:/usr/src/app
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin1234
+      POSTGRES_DB: employeesdatabase
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
